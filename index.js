@@ -17,11 +17,9 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
             if(!res.ok){
                 throw Error("Something went wrong")
             }
-            console.log(res.status)
             return res.json()
         })
         .then(data => {
-            console.log(data)
             document.getElementById('crypto-top').innerHTML = `
                 <img src=${data.image.small}/>
                 <span>${data.name}</span>
@@ -35,3 +33,10 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
             
         })
         .catch(err => console.error(err))
+        
+        function getCurrentTime(){
+            const date = new Date()
+            document.getElementById('time').textContent = date.toLocaleTimeString("en-au", {timeStyle: "short"})
+        }
+
+        setInterval(getCurrentTime, 1000);
