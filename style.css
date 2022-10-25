@@ -1,12 +1,10 @@
-html, body {
-    margin: 0;
-    padding: 0;
+* {
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
     padding: 15px;
-    box-sizing: border-box;
     background: no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -14,10 +12,11 @@ body {
     background-size: cover;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    text-shadow: 2px 2px 2px #474747;
+    text-shadow: 0px 0px 20px #aaaaaa;
 }
 
 main {
+    padding: 20px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -29,4 +28,19 @@ div.top {
 }
 h1.time {
     text-align: center;
+}
+div#crypto {
+    font-size: 1.3rem;
+}
+div#crypto-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+div#crypto-top > span {
+    margin-left: 10px;
+}
+div#crypto > p {
+    margin: 0;
+
 }
