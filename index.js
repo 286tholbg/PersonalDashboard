@@ -1,6 +1,6 @@
 
 
-fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
+    fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
         .then(res => res.json())
         .then(data => {
             document.body.style.backgroundImage = `url(${data.urls.full})`
@@ -11,37 +11,52 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
             document.getElementById('author').textContent = `By: Simon Berger`
         })
 
+    
 
-    fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
-        .then(res => {
-            if(!res.ok){
-                throw Error("Something went wrong")
+    const inputEl = document.getElementById('search')
+
+    // function keyup(e) {
+    //     inputTextValue = e.target.value
+    //     e.preventDefault()
+    //     if(e.keyCode == 13){
+    //         crypto = inputTextValue
+    //     }
+    //     return crypto
+    // }
+
+    document.addEventListener('keyup', function(event) {
+        if(event.code === 'Enter') {
+            event.preventDefault()
+            fetch(`https://api.coingecko.com/api/v3/coins/${event.target.value}`)
+                .then(res => {
+                    if(!res.ok){
+                        throw Error("Something went wrong")
+                    }
+                    return res.json()
+                })
+                .then(data => {
+                    document.getElementById('crypto').innerHTML += `
+                        <img src=${data.image.small}/>
+                        <span>${data.name}</span>
+                        <p>Current Price: $${data.market_data.current_price.aud}<p>
+                        <p>24hr High: $${data.market_data.high_24h.aud}</p>
+                        <p>24hr Low: $${data.market_data.low_24h.aud}</p>
+                        <hr />
+                    `
+                    
+                })
+                .catch(err => console.error(err))
             }
-            return res.json()
         })
-        .then(data => {
-            document.getElementById('crypto-top').innerHTML = `
-                <img src=${data.image.small}/>
-                <span>${data.name}</span>
-            `
-
-            document.getElementById('crypto').innerHTML += `
-                <p>🎯: $${data.market_data.current_price.aud}<p>
-                <p>👆: $${data.market_data.high_24h.aud}</p>
-                <p>👇: $${data.market_data.low_24h.aud}</p>
-            `
-            
-        })
-        .catch(err => console.error(err))
         
         function getCurrentTime(){
             const date = new Date()
-            document.getElementById('time').textContent = date.toLocaleTimeString("en-au", {timeStyle: "short"})
+            document.getElementById('time').textContent = date.toLocaleTimeString("en-au", {timeStyle: "medium"})
         }
 
         setInterval(getCurrentTime, 1000);
 
- 
+    
     const appiKey = "3da8871a71e571b4f07abed794ee9cc4"
 
     navigator.geolocation.getCurrentPosition(pos => {
