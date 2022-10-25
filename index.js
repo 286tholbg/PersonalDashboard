@@ -36,8 +36,10 @@
                 })
                 .then(data => {
                     document.getElementById('crypto').innerHTML += `
-                        <img src=${data.image.small}/>
-                        <span>${data.name}</span>
+                        <div id="crypto-top">
+                            <img src=${data.image.small}/>
+                            <span>${data.name}</span>
+                        </div>
                         <p>Current Price: $${data.market_data.current_price.aud}<p>
                         <p>24hr High: $${data.market_data.high_24h.aud}</p>
                         <p>24hr Low: $${data.market_data.low_24h.aud}</p>

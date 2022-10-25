@@ -48,6 +48,7 @@ div#crypto-top > span {
 }
 div#crypto > p {
     margin: 0;
+    font-size: 1rem;
 }
 #search {
     margin-top: 1.4rem;
