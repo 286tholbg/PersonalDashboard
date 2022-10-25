@@ -5,11 +5,14 @@
 body {
     margin: 0;
     padding: 15px;
+    /* position: fixed; */
+    overflow: hidden;
     background: no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    /* background-attachment: fixed !important; */
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     text-shadow: 0px 0px 20px #aaaaaa;
