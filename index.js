@@ -40,3 +40,25 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
         }
 
         setInterval(getCurrentTime, 1000);
+
+ 
+    const appiKey = "3da8871a71e571b4f07abed794ee9cc4"
+
+    navigator.geolocation.getCurrentPosition(pos => {
+        fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&units=metric&appid=${appiKey}`)
+            .then(res => {
+                if(!res.ok){
+                    throw Error("Weather data not available")
+                }
+                return res.json()
+            })
+            .then(data => {
+
+                document.getElementById('weather').innerHTML = `
+                    <img src=http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png>
+                    <p class="weather-temp">${Math.floor(data.main.temp)}°</p>
+                    <p class="weather-city">${data.name}</p>
+                `
+                console.log(data)
+            })
+    })

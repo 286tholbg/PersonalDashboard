@@ -42,5 +42,24 @@ div#crypto-top > span {
 }
 div#crypto > p {
     margin: 0;
-
+}
+div#weather {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: flex-start;
+}
+div#weather > img {
+    width: 100px;
+}
+p.weather-city {
+    width: 100%;
+    text-align: right;
+    margin-top: -20px;
+}
+p.weather-temp {
+    margin: 0;
+    font-size: 1.7rem;
+    margin-left: -15px;
 }
